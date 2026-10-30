@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { ArrowRight, BookOpen, Briefcase, Check, GraduationCap, MapPin, Clock, Quote, Search, UserPlus, MessageCircle, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Section } from "@/components/site/Section";
 import { HeroSearch } from "@/components/site/HeroSearch";
-import { tutors, materials, services, faqs } from "@/data/sample";
+import { featuredTutors as tutors, materials, services, faqs } from "@/data/sample";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,10 +17,17 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Discover great tutors, explore learning resources and connect with talented professionals — all in one place." },
       { property: "og:title", content: "PUPUK Education — Grow Your Potential" },
       { property: "og:description", content: "Find tutors, learning materials and education freelancers in one friendly marketplace." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
 });
+
+function Card({ to, className, children }: { to: string; className: string; children: ReactNode }) {
+  if (to === "tutors") return <Link to="/tutors" className={className}>{children}</Link>;
+  return <button onClick={() => scrollTo(to)} className={className}>{children}</button>;
+}
 
 const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -66,18 +74,18 @@ function Index() {
               { icon: BookOpen, tone: "bg-sky", title: "Learning Made Accessible.", text: "Worksheets, notes and revision packs made by real educators.", to: "materials" },
               { icon: Briefcase, tone: "bg-peach", title: "Skills Meet Opportunities.", text: "Hire freelancers for design, editing, translation and more.", to: "freelancers" },
             ].map((c) => (
-              <button key={c.title} onClick={() => scrollTo(c.to)} className={`card-soft group p-8 text-left ${c.tone}`}>
+              <Card key={c.title} to={c.to} className={`card-soft group block p-8 text-left ${c.tone}`}>
                 <span className="grid size-14 place-items-center rounded-2xl bg-card text-primary shadow-soft"><c.icon className="size-7" /></span>
                 <h3 className="mt-6 text-2xl font-extrabold">{c.title}</h3>
                 <p className="mt-2 text-foreground/75">{c.text}</p>
                 <span className="mt-6 inline-flex items-center gap-1 font-bold text-primary">Explore <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
-              </button>
+              </Card>
             ))}
           </div>
         </Section>
 
         {/* TUTORS */}
-        <Section id="tutors" eyebrow="Featured tutors" title="Learn from passionate educators" action={<Button variant="pill-outline">View all tutors</Button>}>
+        <Section id="tutors" eyebrow="Featured tutors" title="Learn from passionate educators" action={<Button variant="pill-outline" asChild><Link to="/tutors">View all tutors</Link></Button>}>
           <div className="grid gap-6 md:grid-cols-3">
             {tutors.map((t) => (
               <article key={t.name} className="card-soft overflow-hidden">
@@ -94,7 +102,7 @@ function Index() {
                   </div>
                   <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                     <p><span className="font-display text-2xl font-extrabold">RM{t.fee}</span><span className="text-sm text-muted-foreground">/hour</span></p>
-                    <Button variant="pill">View Profile</Button>
+                    <Button variant="pill" asChild><Link to="/tutors">View Profile</Link></Button>
                   </div>
                 </div>
               </article>

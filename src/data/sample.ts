@@ -12,11 +12,26 @@ export const categories: { id: Category; label: string; anchor: string; placehol
 
 export const popularSearches = ["SPM Mathematics", "IGCSE Physics", "Bahasa Melayu", "UPSR English", "Essay editing", "Coding for kids"];
 
-export const tutors = [
-  { name: "Nur Aisyah Rahman", photo: tutor1, qualification: "B.Ed. (Mathematics), UPSI", subjects: ["Mathematics", "Add Maths"], experience: "8 years", mode: "Online & In-person", fee: 60 },
-  { name: "Daniel Tan Wei Ming", photo: tutor2, qualification: "M.Sc. Physics, Universiti Malaya", subjects: ["Physics", "Chemistry"], experience: "15 years", mode: "In-person", fee: 85 },
-  { name: "Priya Shanmugam", photo: tutor3, qualification: "B.A. English (TESL), UKM", subjects: ["English", "Literature"], experience: "5 years", mode: "Online", fee: 50 },
+export type TeachingMode = "Online" | "In-person" | "Online & In-person";
+
+export type Tutor = {
+  id: string; name: string; photo?: string; qualification: string; subjects: string[];
+  experience: string; years: number; mode: TeachingMode; fee: number; location: string; levels: string[];
+};
+
+// Sample/demo profiles only — not real tutors.
+export const tutors: Tutor[] = [
+  { id: "nur-aisyah", name: "Nur Aisyah Rahman", photo: tutor1, qualification: "B.Ed. (Mathematics), UPSI", subjects: ["Mathematics", "Add Maths"], experience: "8 years", years: 8, mode: "Online & In-person", fee: 60, location: "Selangor", levels: ["Secondary (SPM)"] },
+  { id: "daniel-tan", name: "Daniel Tan Wei Ming", photo: tutor2, qualification: "M.Sc. Physics, Universiti Malaya", subjects: ["Physics", "Chemistry"], experience: "15 years", years: 15, mode: "In-person", fee: 85, location: "Kuala Lumpur", levels: ["Secondary (SPM)", "IGCSE", "Pre-university"] },
+  { id: "priya-s", name: "Priya Shanmugam", photo: tutor3, qualification: "B.A. English (TESL), UKM", subjects: ["English", "Literature"], experience: "5 years", years: 5, mode: "Online", fee: 50, location: "Penang", levels: ["Primary", "Lower Secondary"] },
+  { id: "ahmad-faiz", name: "Ahmad Faiz Ismail", qualification: "B.Sc. Biology, USM", subjects: ["Biology", "Science"], experience: "6 years", years: 6, mode: "Online & In-person", fee: 55, location: "Johor", levels: ["Lower Secondary", "Secondary (SPM)"] },
+  { id: "lim-jia-hui", name: "Lim Jia Hui", qualification: "B.A. Chinese Studies, UTAR", subjects: ["Mandarin"], experience: "4 years", years: 4, mode: "Online", fee: 40, location: "Perak", levels: ["Primary", "Lower Secondary"] },
+  { id: "siti-hajar", name: "Siti Hajar Kamal", qualification: "B.Ed. (Bahasa Melayu), UPM", subjects: ["Bahasa Melayu", "Sejarah"], experience: "10 years", years: 10, mode: "In-person", fee: 70, location: "Sabah", levels: ["Primary", "Secondary (SPM)"] },
 ];
+
+export const featuredTutors = tutors.slice(0, 3);
+export const malaysianLocations = ["Johor","Kedah","Kelantan","Kuala Lumpur","Melaka","Negeri Sembilan","Pahang","Penang","Perak","Perlis","Putrajaya","Sabah","Sarawak","Selangor","Terengganu","Labuan"];
+export const studentLevels = ["Primary", "Lower Secondary", "Secondary (SPM)", "IGCSE", "Pre-university"];
 
 export const materials = [
   { title: "SPM Add Maths Formula Pack", subject: "Additional Mathematics", grade: "Form 4–5", creator: "Cikgu Hafiz", price: 15, tone: "bg-mint", emoji: "∑" },
