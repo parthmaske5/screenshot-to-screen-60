@@ -12,7 +12,7 @@ export function SiteFooter() {
           <p className="mt-4 max-w-sm text-muted-foreground">A friendly marketplace connecting students, parents, tutors, creators and freelancers.</p>
           <div className="mt-5 flex gap-2">
             {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#top" aria-label="Social link" className="grid size-10 place-items-center rounded-full bg-card text-primary shadow-soft hover:bg-primary hover:text-primary-foreground">
+              <a key={i} href="/" aria-label="Social link" className="grid size-10 place-items-center rounded-full bg-card text-primary shadow-soft hover:bg-primary hover:text-primary-foreground">
                 <Icon className="size-4" />
               </a>
             ))}
@@ -27,7 +27,7 @@ export function SiteFooter() {
         <div>
           <h4 className="font-bold">Company</h4>
           <ul className="mt-4 space-y-2 text-muted-foreground">
-            {company.map((c) => <li key={c}><a href={c === "FAQs" ? "#faq" : "#top"} className="hover:text-primary">{c}</a></li>)}
+            {company.map((c) => <li key={c}><a href={c === "FAQs" ? "/#faq" : "/"} className="hover:text-primary">{c}</a></li>)}
           </ul>
         </div>
       </div>

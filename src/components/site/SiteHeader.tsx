@@ -3,17 +3,17 @@ import { Menu, X, Sprout } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const navLinks = [
-  { label: "Home", href: "#top" },
-  { label: "Find Tutors", href: "#tutors" },
-  { label: "Learning Materials", href: "#materials" },
-  { label: "Freelancers", href: "#freelancers" },
-  { label: "Membership", href: "#membership" },
-  { label: "Become a Provider", href: "#how-it-works" },
+  { label: "Home", href: "/" },
+  { label: "Find Tutors", href: "/tutors" },
+  { label: "Learning Materials", href: "/#materials" },
+  { label: "Freelancers", href: "/#freelancers" },
+  { label: "Membership", href: "/#membership" },
+  { label: "Become a Provider", href: "/#how-it-works" },
 ];
 
 export function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-2 font-display text-xl font-extrabold text-foreground">
+    <a href="/" className="flex items-center gap-2 font-display text-xl font-extrabold text-foreground">
       <span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground">
         <Sprout className="size-5" />
       </span>
