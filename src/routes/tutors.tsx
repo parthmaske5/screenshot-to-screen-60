@@ -99,7 +99,7 @@ function TutorsPage() {
           <section>
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
               <p className="font-bold" aria-live="polite">{results.length} {results.length === 1 ? "tutor" : "tutors"} found</p>
-              <label className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">Sort by
+              <label className="flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-muted-foreground">Sort by
                 <select className={`${selectCls} w-auto`} value={f.sort} onChange={(e) => set("sort", e.target.value as TutorFilters["sort"])}>
                   <option value="recommended">Recommended</option>
                   <option value="price-asc">Price: low to high</option>
