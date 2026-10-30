@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { ArrowRight, BookOpen, Briefcase, Check, GraduationCap, MapPin, Clock, Quote, Search, UserPlus, MessageCircle, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import { Button } from "@/components/ui/button";
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Card({ to, className, children }: { to: string; className: string; children: React.ReactNode }) {
+function Card({ to, className, children }: { to: string; className: string; children: ReactNode }) {
   if (to === "tutors") return <Link to="/tutors" className={className}>{children}</Link>;
   return <button onClick={() => scrollTo(to)} className={className}>{children}</button>;
 }
