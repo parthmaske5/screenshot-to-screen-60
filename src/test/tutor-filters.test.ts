@@ -17,6 +17,6 @@ describe("filterTutors", () => {
   it("sorts by price low to high and experience", () => {
     const p = filterTutors(tutors, { ...defaultFilters, sort: "price-asc" }).map((t) => t.fee);
     expect(p).toEqual([...p].sort((a, b) => a - b));
-    expect(filterTutors(tutors, { ...defaultFilters, sort: "experience" })[0].id).toBe("daniel-tan");
+    expect(filterTutors(tutors, { ...defaultFilters, sort: "experience" })[0]?.id).toBe("daniel-tan");
   });
 });
